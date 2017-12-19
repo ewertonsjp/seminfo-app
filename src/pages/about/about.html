@@ -10,45 +10,23 @@
 
   <ion-slides pager>
 
-    <ion-slide>
+    <ion-slide *ngFor='let evento of eventos'>
       <ion-card>
 
-        <img src="http://9solucoes.com.br/seminfo/images/palestras/aislan1.jpg"/>
+        <img src="{{evento.img}}"/>
     
         <ion-card-content>
           <ion-card-title>
-            Aislan Rafael
+            {{evento.autor}}
           </ion-card-title>
           <p>
-            Inovação, empreendedorismo e aceleração de ideias no semiárido.
+            {{evento.descricao}}
           </p>
         </ion-card-content>
     
         <ion-item>
           <ion-icon name='md-heart' item-start style="color: #d03e84"></ion-icon>
-          <ion-badge item-end>9</ion-badge>
-        </ion-item>
-    
-      </ion-card>
-    </ion-slide>
-  
-    <ion-slide>
-      <ion-card>
-
-        <img src="http://9solucoes.com.br/seminfo/images/palestras/aislan1.jpg"/>
-    
-        <ion-card-content>
-          <ion-card-title>
-            Aislan Rafael
-          </ion-card-title>
-          <p>
-            Inovação, empreendedorismo e aceleração de ideias no semiárido.
-          </p>
-        </ion-card-content>
-    
-        <ion-item>
-          <ion-icon name='md-heart' item-start style="color: #d03e84"></ion-icon>
-          <ion-badge item-end>9</ion-badge>
+          <ion-badge item-end>{{evento.likes}}</ion-badge>
         </ion-item>
     
       </ion-card>
