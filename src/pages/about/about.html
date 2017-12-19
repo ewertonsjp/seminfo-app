@@ -25,7 +25,7 @@
         </ion-card-content>
     
         <ion-item>
-          <ion-icon name='md-heart' item-start style="color: #d03e84"></ion-icon>
+          <ion-icon name='md-heart' item-start style="color: #d03e84" (click)="like(evento)"></ion-icon>
           <ion-badge item-end>{{evento.likes}}</ion-badge>
         </ion-item>
     
