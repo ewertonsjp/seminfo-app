@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Loading, LoadingController } from 'ionic-angular';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
@@ -10,16 +10,31 @@ import 'rxjs/add/operator/map';
 export class AboutPage {
 
   eventos;
+  loading;
 
-  constructor(public navCtrl: NavController, public http: Http) {
-    this.get().then(data => {
-      this.eventos = data;
+  constructor(public navCtrl: NavController, public http: Http, public loadingCtrl: LoadingController) {
+    this.loading = this.loadingCtrl.create({
+      content: 'Loading...'
+    });
+
+    this.loading.present().then(() => {
+      this.get().then(data => {
+        this.eventos = data;
+        this.loading.dismiss();
+      });
     });
   }
 
   like(evento) {
-    this.post(evento).then(data => {
-      evento.likes += 1;
+    this.loading = this.loadingCtrl.create({
+      content: 'Like in progress...'
+    });
+
+    this.loading.present().then(() => {
+      this.post(evento).then(data => {
+        evento.likes += 1;
+        this.loading.dismiss();
+      });
     });
   }
 
